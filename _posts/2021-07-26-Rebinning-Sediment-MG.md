@@ -45,7 +45,7 @@ Activate Anvio:
 This takes a while to run; run using a bash script:
 
 
-```bash
+```
 #!/bin/bash
 #
 #$ -cwd
@@ -73,7 +73,7 @@ anvi-run-hmms -c contigs.db --num-threads 24
 # get COGs
 anvi-run-ncbi-cogs -c contigs.db --num-threads 24
 
-rsync -r /scratch/sogin/tmp.$JOB_ID/ /opt/extern/bremen/symbiosis/sogin/prj001-comp-gene-chr/02_Analysis
+rsync -r /scratch/sogin/tmp.$JOB_ID/ /opt/extern/bremen/symbiosis/sogin/prj001-comp-gene-chr/
 
 ## CLEAN UP ##
 rm /scratch/sogin/tmp.$JOB_ID/ -R;
@@ -84,7 +84,10 @@ date
 
 After script runs, display stats
 
-```bash
+```
 # distplay stats
 anvi-display-contigs-stats contigs.db
 ```
+
+stats: 
+
