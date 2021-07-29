@@ -33,30 +33,30 @@ EOF
 
 * Test if it worked: 
 
-`
+```
 python -c 'import webbrowser; print(webbrowser.__file__.rstrip("c"))'
-`
+```
 
 This should print something like: 
 
-`
+```
 /path/to/anvio/env/lib/python3.6/webbrowser.py
-`
+```
 
 To test of the module runs right: 
 
-`
+```
 python -c "import webbrowser; webbrowser.open_new('https://www.google.com/')"
-`
+```
 
 This should print back: 
-`
+```
 OPEN_ON_LOCAL[https://www.google.com/]
-`
+```
 -> Which is does successfully, we are on the right track!
 
 * I needed to add a file to the following directory
-`~/miniconda3/envs/anvio-7/etc/conda/activate.d`
+```~/miniconda3/envs/anvio-7/etc/conda/activate.d```
 
 File name: activate-interactive-ports.sh
 
@@ -75,9 +75,9 @@ Restart anvio and test if it worked:
 
 * I created an alias to logging into cologn and pasted it into my bash_profile or similar file (in this case .zshrc)
 
-`
-alias cologn="ssh -L 8100:localhost: 8100 sogin@your-uni-server | tee /dev/tty | python3 ~/.ssh/run_webbrowser.py"
-`
+
+```alias cologn="ssh -L 8100:localhost: 8100 sogin@your-uni-server | tee /dev/tty | python3 ~/.ssh/run_webbrowser.py"```
+
 Note: the number after the L must be the same as your port you enntered above in teh file activate-itneractive-ports.sh. You also need to modify the server address and alias name as needed
 
 * I then needed to create the run_webbrowser.py file on my end in the .ssh folder:
@@ -96,7 +96,7 @@ for line in sys.stdin:
 * To log into cologn, just type cologn!
 * Cologn requires one more additional step, run the tunnel again to a gc-node
 
-`ssh 8100:localhost:8100 gc-node-1`
+```ssh 8100:localhost:8100 gc-node-1```
 
 Tada! 
 
