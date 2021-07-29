@@ -13,7 +13,7 @@ Protocol follows from anvio blog post [here](https://merenlab.org/2018/03/07/wor
 
 Its a bit more complicated then in the blog post since in cologn I need to tunnel into a server machine and then tunnal from there.  
 
-###On Server
+### On Server
 
 *  I created this file on the sever side to tell python how to connect to the web 
 
@@ -51,21 +51,21 @@ OPEN_ON_LOCAL[https://www.google.com/]
 -> Which is does successfully, we are on the right track!
 
 * I needed to add a file to the following directory
-```~/miniconda3/envs/anvio-7/etc/conda/activate.d```
+`~/miniconda3/envs/anvio-7/etc/conda/activate.d`
 
 File name: activate-interactive-ports.sh
 
-```bash
+`bash
 #!/usr/bin/env bash
 [[ "$(whoami)" = "sogin" ]] && export ANVIO_PORT=8100
-```
+`
 Restart anvio and test if it worked: 
 
-```echo $ANVIO_PORT```
+`echo $ANVIO_PORT`
 
 -> it worked
 
-###Locally 
+### Locally 
 
 * I created an alias to logging into cologn and pasted it into my bash_profile or similar file (in this case .zshrc)
 
