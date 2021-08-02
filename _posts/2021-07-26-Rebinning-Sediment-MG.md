@@ -91,3 +91,5 @@ anvi-display-contigs-stats contigs.db
 
 stats: 
 
+Unforunately, the run hmms didn't work. Run hmms on indivdiual bins following binning. 
+
