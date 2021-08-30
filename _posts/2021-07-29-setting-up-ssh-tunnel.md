@@ -96,7 +96,7 @@ for line in sys.stdin:
 * To log into cologn, just type cologn!
 * Cologn requires one more additional step, run the tunnel again to a gc-node
 
-```ssh 8100:localhost:8100 gc-node-1```
+```ssh -L 8100:localhost:8100 gc-node-1```
 
 Tada! 
 
