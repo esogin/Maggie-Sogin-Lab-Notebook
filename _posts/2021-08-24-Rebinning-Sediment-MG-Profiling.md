@@ -24,7 +24,6 @@ Re-display contigs database stats:
 ```
 anvi-display-contigs-stats contigs.db
 ```
-
 We have something like 12 M contigs!
 
 ##2. Set up profiling qsub, bash script
@@ -42,7 +41,7 @@ otherwise, move on to anvi-profile comand:
 anvi-profile -i SAMPLE-01.bam -c contigs.db --output-dir profiles --sample-name NEW-NAME 
 ```
 
-Important: New Namae can not have - in name file, only _, letters etc. 
+Important: New Name can not have - in name file, only _, letters etc. 
 
 | Names                 | New Name |   
 |-----------------------|--------|
@@ -55,7 +54,9 @@ Important: New Namae can not have - in name file, only _, letters etc.
 | 3847_G_sorted.bam.bai | In_G   | 
 | 3847_H_sorted.bam.bai | In_H   |
 | 3847_I_sorted.bam.bai | In_I   |
- 
+
+Trouble shooting tips:  
+- can't allocate memory with running on 48 cores (T set to 24), set T to way less (try, T=4) but ask for 48 cores.  
 
 ```
 #!/bin/bash
@@ -76,13 +77,11 @@ rsync -r /opt/extern/bremen/symbiosis/sogin/prj001-comp-gene-chr/ /scratch/sogin
 
 conda activate anvio-7
 
-#cd /scratch/sogin/tmp.$JOB_ID/01_Data/bam
-#anvi-init-bam 3847_A_sorted.bam -o 3847_A_sorted_indexed.bam
 
 cd /scratch/sogin/tmp.$JOB_ID/02_Analysis
-anvi-profile -i ../01_Data/bam/3847_A_sorted.bam -c contigs.db -o profiles --sample-name Out-A -T 24 -W
+anvi-profile -i ../01_Data/bam/3847_A_sorted.bam -c contigs.db --sample-name Out_A -T 4 -W
 
-rsync -r /scratch/sogin/tmp.$JOB_ID/ /opt/extern/bremen/symbiosis/sogin/prj001-comp-gene-chr/02_Analysis/
+rsync -r /scratch/sogin/tmp.$JOB_ID/02_Analysis/ /opt/extern/bremen/symbiosis/sogin/prj001-comp-gene-chr/02_Analysis/
 
 ## CLEAN UP ##
 rm /scratch/sogin/tmp.$JOB_ID/ -R;
