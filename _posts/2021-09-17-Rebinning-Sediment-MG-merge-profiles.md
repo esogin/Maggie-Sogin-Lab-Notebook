@@ -39,3 +39,38 @@ anvi-db-info edge_E/PROFILE.db
 ```bash
 anvi-merge */PROFILE.db -o SAMPLES-MERGED -c contigs.db
 ```
+
+2. Cluster contigs with automatic binning pipelines
+
+Metabat
+cite: Kang DD, Li F, Kirton E, Thomas A, Egan R, An H, Wang Z. 2019. MetaBAT 2: an       adaptive binning algorithm for robust and efficient genome reconstruction from       metagenome assemblies. PeerJ 7:e7359 https://doi.org/10.7717/peerj.7359 
+
+```bash
+## metabat2
+anvi-cluster-contigs -p SAMPLES-MERGED/PROFILE.db -c contigs.db -C METABAT2 --driver metabat2 -m 2000 --seed 45 --just-do-it -T 24; 
+```
+
+Concact
+```bash
+## Concact
+anvi-cluster-contigs -p SAMPLES-MERGED/PROFILE.db -c contigs.db -C CONCOCT --driver concoct --just-do-it -T 24 --seed 45; 
+```
+
+MaxBin
+```bash
+## Concact
+anvi-cluster-contigs -p SAMPLES-MERGED/PROFILE.db -c contigs.db -C MAXBIN --driver maxbin2 --just-do-it -T 24; 
+```
+
+Binsanity 
+
+```bash
+## Concact
+anvi-cluster-contigs -p SAMPLES-MERGED/PROFILE.db -c contigs.db -C MAXBIN --driver maxbin2 --just-do-it -T 24; 
+```
+
+
+DasTool
+
+
+
